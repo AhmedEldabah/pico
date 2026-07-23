@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
 
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>" />
@@ -98,6 +99,16 @@
         <div class="hero__stage">
           <div class="stage-ring" aria-hidden="true"></div>
           <canvas id="heroCanvas" role="img" aria-label="Interactive 3D strawberry you can rotate"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRUST STRIP ===== -->
+    <section class="trust" aria-label="Certifications">
+      <div class="trust__inner">
+        <span class="trust__label" data-i18n="trustLabel">Audited to the standards buyers require</span>
+        <div class="trust__marks">
+          <span>BRC</span><span>GlobalG.A.P.</span><span>ETI</span><span>Field to Fork</span><span>Tesco Nurture</span>
         </div>
       </div>
     </section>
@@ -217,12 +228,55 @@
       </div>
     </section>
 
+    <!-- ===== FIELD TO FORK ===== -->
+    <section class="f2f" id="process">
+      <div class="section-head section-head--center">
+        <h2 data-i18n="f2fTitle">From field to fork in hours, not days</h2>
+        <p data-i18n="f2fSub">Every pallet traces back to the block it grew in. This is the journey from our soil to your shelf.</p>
+      </div>
+      <div class="f2f__track">
+        <article class="f2f__step">
+          <span class="f2f__ico"><i class="ph ph-plant" aria-hidden="true"></i></span>
+          <h3 data-i18n="f2fStep1">Picked at dawn</h3>
+          <p data-i18n="f2fStep1b">Harvested by hand at peak ripeness, while the field is still cool.</p>
+        </article>
+        <article class="f2f__step">
+          <span class="f2f__ico"><i class="ph ph-snowflake" aria-hidden="true"></i></span>
+          <h3 data-i18n="f2fStep2">Cooled within the hour</h3>
+          <p data-i18n="f2fStep2b">Straight into the cold chain to lock in freshness and shelf life.</p>
+        </article>
+        <article class="f2f__step">
+          <span class="f2f__ico"><i class="ph ph-package" aria-hidden="true"></i></span>
+          <h3 data-i18n="f2fStep3">Graded &amp; packed</h3>
+          <p data-i18n="f2fStep3b">Sorted to retailer spec in BRC-certified packing houses, fully traceable.</p>
+        </article>
+        <article class="f2f__step">
+          <span class="f2f__ico"><i class="ph ph-boat" aria-hidden="true"></i></span>
+          <h3 data-i18n="f2fStep4">On its way</h3>
+          <p data-i18n="f2fStep4b">Sea and air freight to the UK, Europe, the Gulf and beyond.</p>
+        </article>
+      </div>
+    </section>
+
     <!-- ===== GLOBAL REACH ===== -->
     <section class="reach" id="reach">
-      <div class="reach__copy">
-        <span class="eyebrow" data-i18n="reachEyebrow">Global reach</span>
-        <h2 data-i18n="reachTitle">From our fields to shelves on six trade routes</h2>
-        <p data-i18n="reachBody">Cooled, graded and on its way within hours of picking. PICO fruit meets the requirements of the world's most demanding retailers.</p>
+      <div class="reach__head">
+        <div class="reach__copy">
+          <span class="eyebrow" data-i18n="reachEyebrow">Global reach</span>
+          <h2 data-i18n="reachTitle">From our fields to shelves on six trade routes</h2>
+          <p data-i18n="reachBody">Cooled, graded and on its way within hours of picking. PICO fruit meets the requirements of the world's most demanding retailers.</p>
+        </div>
+        <div class="reach__map" aria-hidden="true">
+          <svg viewBox="0 0 600 400" class="routes" role="presentation">
+            <defs>
+              <radialGradient id="hub" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="var(--lime)"/><stop offset="100%" stop-color="var(--green-600)"/>
+              </radialGradient>
+            </defs>
+            <g class="routes__lines"></g>
+            <g class="routes__nodes"></g>
+          </svg>
+        </div>
       </div>
       <ul class="reach__list">
         <li><strong>UK</strong><span data-i18n="reachUk">Supermarket programmes</span></li>

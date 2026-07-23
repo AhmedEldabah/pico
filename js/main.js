@@ -48,7 +48,7 @@
   /* ---------- scroll reveal ---------- */
   const revealTargets = [
     ".section-head", ".stats__inner", ".grow__layout", ".grow__more",
-    ".heritage__media", ".heritage__copy", ".cert", ".reach__copy", ".reach__list li", ".contact__panel"
+    ".heritage__media", ".heritage__copy", ".cert", ".f2f__step", ".reach__copy", ".reach__map", ".reach__list li", ".contact__panel"
   ];
   const revealEls = [];
   revealTargets.forEach((sel) => $$(sel).forEach((el) => { el.classList.add("reveal"); revealEls.push(el); }));
@@ -126,6 +126,67 @@
       c.replaceWith(wrap);
     });
   }
+
+  /* ---------- global-reach trade-routes diagram ---------- */
+  (function buildRoutes() {
+    const svg = $(".routes");
+    if (!svg) return;
+    const SVGNS = "http://www.w3.org/2000/svg";
+    const hub = { x: 300, y: 215 };
+    const dests = [
+      { x: 110, y: 80, label: "UK" },
+      { x: 300, y: 52, label: "Europe" },
+      { x: 488, y: 84, label: "Russia" },
+      { x: 548, y: 222, label: "Far East" },
+      { x: 450, y: 332, label: "Gulf" },
+      { x: 236, y: 356, label: "S. Africa" }
+    ];
+    const lines = $(".routes__lines", svg);
+    const nodes = $(".routes__nodes", svg);
+
+    dests.forEach((d, i) => {
+      const mx = (hub.x + d.x) / 2, my = (hub.y + d.y) / 2;
+      // perpendicular bow for a gentle arc
+      const dx = d.x - hub.x, dy = d.y - hub.y;
+      const cx = mx - dy * 0.18, cy = my + dx * 0.18;
+      const path = document.createElementNS(SVGNS, "path");
+      path.setAttribute("d", `M${hub.x},${hub.y} Q${cx},${cy} ${d.x},${d.y}`);
+      path.setAttribute("class", "route-line");
+      path.style.animationDelay = (i * 0.35) + "s";
+      lines.appendChild(path);
+
+      const pulse = document.createElementNS(SVGNS, "circle");
+      pulse.setAttribute("cx", d.x); pulse.setAttribute("cy", d.y); pulse.setAttribute("r", 4.5);
+      pulse.setAttribute("class", "route-node");
+      pulse.style.animationDelay = (i * 0.35) + "s";
+      nodes.appendChild(pulse);
+
+      const label = document.createElementNS(SVGNS, "text");
+      const left = d.x < hub.x;
+      label.setAttribute("x", d.x + (left ? -10 : 10));
+      label.setAttribute("y", d.y - 9);
+      label.setAttribute("text-anchor", left ? "end" : "start");
+      label.setAttribute("class", "route-label");
+      label.textContent = d.label;
+      nodes.appendChild(label);
+    });
+
+    // hub (Egypt / PICO)
+    const ring = document.createElementNS(SVGNS, "circle");
+    ring.setAttribute("cx", hub.x); ring.setAttribute("cy", hub.y); ring.setAttribute("r", 9);
+    ring.setAttribute("class", "route-hub-ring");
+    nodes.appendChild(ring);
+    const hubDot = document.createElementNS(SVGNS, "circle");
+    hubDot.setAttribute("cx", hub.x); hubDot.setAttribute("cy", hub.y); hubDot.setAttribute("r", 7);
+    hubDot.setAttribute("fill", "url(#hub)");
+    nodes.appendChild(hubDot);
+    const hubLabel = document.createElementNS(SVGNS, "text");
+    hubLabel.setAttribute("x", hub.x); hubLabel.setAttribute("y", hub.y + 26);
+    hubLabel.setAttribute("text-anchor", "middle");
+    hubLabel.setAttribute("class", "route-hub-label");
+    hubLabel.textContent = "Egypt · PICO";
+    nodes.appendChild(hubLabel);
+  })();
 
   /* ---------- contact form (demo validation) ---------- */
   const form = $("#contactForm");

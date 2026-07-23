@@ -14,8 +14,17 @@ const I18N = {
     heroCtaPrimary: "See what we grow", heroCtaSecondary: "Our story",
     heroHint: "Drag the strawberry to spin it →",
 
+    trustLabel: "Audited to the standards buyers require",
+
     statAcres: "Acres farmed", statGen: "Generations of growers",
     statMarkets: "Export regions", statCerts: "Global certifications",
+
+    f2fTitle: "From field to fork in hours, not days",
+    f2fSub: "Every pallet traces back to the block it grew in. This is the journey from our soil to your shelf.",
+    f2fStep1: "Picked at dawn", f2fStep1b: "Harvested by hand at peak ripeness, while the field is still cool.",
+    f2fStep2: "Cooled within the hour", f2fStep2b: "Straight into the cold chain to lock in freshness and shelf life.",
+    f2fStep3: "Graded & packed", f2fStep3b: "Sorted to retailer spec in BRC-certified packing houses, fully traceable.",
+    f2fStep4: "On its way", f2fStep4b: "Sea and air freight to the UK, Europe, the Gulf and beyond.",
 
     growTitle: "A basket built over decades",
     growSub: "Pick a fruit and turn it over in your hands. Every variety below is grown, packed and shipped by PICO.",
@@ -78,8 +87,17 @@ const I18N = {
     heroCtaPrimary: "شاهد ما نزرعه", heroCtaSecondary: "قصتنا",
     heroHint: "← اسحب الفراولة لتدويرها",
 
+    trustLabel: "معتمدون وفق المعايير التي يطلبها المشترون",
+
     statAcres: "فدان مزروع", statGen: "أجيال من المزارعين",
     statMarkets: "مناطق تصدير", statCerts: "شهادات عالمية",
+
+    f2fTitle: "من الحقل إلى المائدة في ساعات، لا أيام",
+    f2fSub: "كل منصّة تعبئة يمكن تتبّعها إلى القطعة التي نمت فيها. هذه رحلتها من تربتنا إلى رفّك.",
+    f2fStep1: "يُقطف عند الفجر", f2fStep1b: "يُحصد يدويًا عند ذروة النضج بينما الحقل ما زال باردًا.",
+    f2fStep2: "يُبرّد خلال ساعة", f2fStep2b: "مباشرة إلى سلسلة التبريد للحفاظ على النضارة وطول العمر.",
+    f2fStep3: "يُصنّف ويُعبّأ", f2fStep3b: "يُفرز وفق مواصفات التجزئة في محطات معتمدة من BRC مع تتبّع كامل.",
+    f2fStep4: "في طريقه إليك", f2fStep4b: "شحن بحري وجوي إلى المملكة المتحدة وأوروبا والخليج وأبعد.",
 
     growTitle: "سلّة بُنيت عبر عقود",
     growSub: "اختر فاكهة وقلّبها بين يديك. كل صنف بالأسفل تزرعه پيكو وتُعبّئه وتشحنه.",

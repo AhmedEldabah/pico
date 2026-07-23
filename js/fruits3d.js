@@ -242,8 +242,27 @@
     controls.autoRotate = !REDUCED;
     controls.autoRotateSpeed = opts.autoRotateSpeed || 1.6;
 
+    // soft contact shadow under the fruit (radial sprite on a ground plane)
+    const shadowTex = (function () {
+      const c = document.createElement("canvas"); c.width = c.height = 128;
+      const g = c.getContext("2d");
+      const grd = g.createRadialGradient(64, 64, 4, 64, 64, 64);
+      grd.addColorStop(0, "rgba(20,40,25,0.42)");
+      grd.addColorStop(1, "rgba(20,40,25,0)");
+      g.fillStyle = grd; g.fillRect(0, 0, 128, 128);
+      return new THREE.CanvasTexture(c);
+    })();
+    const shadow = new THREE.Mesh(
+      new THREE.PlaneGeometry(3.4, 3.4),
+      new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false })
+    );
+    shadow.rotation.x = -Math.PI / 2;
+    shadow.position.y = -1.35;
+    scene.add(shadow);
+
     let current = null;
     let spinKick = 0;
+    let floatT = Math.random() * 6.28;
 
     function setFruit(name) {
       if (current) {
@@ -280,6 +299,13 @@
         current.rotation.y += spinKick;
         spinKick *= 0.94;
         if (spinKick < 0.002) spinKick = 0;
+      }
+      if (!REDUCED && current) {
+        floatT += 0.012;
+        const fy = Math.sin(floatT) * 0.06;
+        current.position.y = fy;
+        shadow.scale.setScalar(1.15 - fy * 0.9);
+        shadow.material.opacity = 0.9 - fy * 1.2;
       }
       controls.update();
       renderer.render(scene, camera);
