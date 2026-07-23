@@ -69,15 +69,19 @@
 
   /* ---------- animated counters ---------- */
   const counters = $$(".stat__num");
-  const fmt = (n) => n >= 1000 ? n.toLocaleString(root.lang === "ar" ? "ar-EG" : "en-US") : String(n);
+  const fmtNum = (n, el) => {
+    if (el.dataset.plain) return String(n); // e.g. a year: no thousands separator
+    const s = n >= 1000 ? n.toLocaleString(root.lang === "ar" ? "ar-EG" : "en-US") : String(n);
+    return (el.dataset.prefix || "") + s + (el.dataset.suffix || "");
+  };
   const runCount = (el) => {
     const target = parseInt(el.dataset.count, 10);
-    if (REDUCED) { el.textContent = fmt(target); return; }
+    if (REDUCED) { el.textContent = fmtNum(target, el); return; }
     const dur = 1400, start = performance.now();
     const tick = (now) => {
       const p = Math.min((now - start) / dur, 1);
       const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(Math.round(target * eased));
+      el.textContent = fmtNum(Math.round(target * eased), el);
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -87,14 +91,11 @@
   }, { threshold: 0.5 });
   counters.forEach((c) => countIO.observe(c));
   // re-render numbers on language change (locale digits)
-  window.addEventListener("langchange", () => counters.forEach((c) => { if (c.textContent !== "0") c.textContent = fmt(parseInt(c.dataset.count, 10)); }));
+  window.addEventListener("langchange", () => counters.forEach((c) => { if (c.textContent !== "0") c.textContent = fmtNum(parseInt(c.dataset.count, 10), c); }));
 
-  /* ---------- 3D fruit viewers ---------- */
-  let heroViewer = null, fruitViewer = null;
+  /* ---------- 3D fruit viewer (What we grow) ---------- */
+  let fruitViewer = null;
   if (window.THREE && window.THREE.OrbitControls && window.PICO_FRUITS) {
-    const heroCanvas = $("#heroCanvas");
-    if (heroCanvas) heroViewer = window.PICO_FRUITS.makeViewer(heroCanvas, { fruit: "strawberry", autoRotateSpeed: 1.4 });
-
     const fruitCanvas = $("#fruitCanvas");
     if (fruitCanvas) {
       fruitViewer = window.PICO_FRUITS.makeViewer(fruitCanvas, { fruit: "strawberry", autoRotateSpeed: 1.8 });
@@ -107,24 +108,20 @@
           $$(".fruit-card").forEach((c) => { c.hidden = c.dataset.panel !== fruit; });
         });
       });
-    }
 
-    /* Easter egg #1: click the hero strawberry 5x → it spins wildly */
-    let clicks = 0, clickTimer = null;
-    heroCanvas?.addEventListener("pointerdown", () => {
-      clicks++;
-      clearTimeout(clickTimer);
-      clickTimer = setTimeout(() => (clicks = 0), 1200);
-      if (clicks >= 5) { clicks = 0; heroViewer?.kickSpin(); dropFruit(14); }
-    });
+      /* Easter egg #1: tap the 3D fruit 5x → it spins wildly and rains fruit */
+      let clicks = 0, clickTimer = null;
+      fruitCanvas.addEventListener("pointerdown", () => {
+        clicks++;
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => (clicks = 0), 1200);
+        if (clicks >= 5) { clicks = 0; fruitViewer?.kickSpin(); dropFruit(14); }
+      });
+    }
   } else {
     // graceful fallback if WebGL/CDN unavailable
-    $$("#heroCanvas, #fruitCanvas").forEach((c) => {
-      const wrap = document.createElement("div");
-      wrap.textContent = "🍓";
-      wrap.style.cssText = "font-size:8rem;display:grid;place-items:center;height:100%;";
-      c.replaceWith(wrap);
-    });
+    const c = $("#fruitCanvas");
+    if (c) { const w = document.createElement("div"); w.textContent = "🍓"; w.style.cssText = "font-size:8rem;display:grid;place-items:center;height:100%;"; c.replaceWith(w); }
   }
 
   /* ---------- global-reach trade-routes diagram ---------- */

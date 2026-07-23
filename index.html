@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>PICO Modern Agriculture — Egyptian fruit, grown for the world</title>
-  <meta name="description" content="PICO Modern Agriculture is a third-generation Egyptian grower and exporter farming 7,000 acres of premium fruit for supermarkets across the UK, Europe and the Gulf." />
-  <meta name="theme-color" content="#0f3d24" />
+  <title>PICO Modern Agriculture — As fresh as it gets</title>
+  <meta name="description" content="PICO Modern Agriculture — a family-owned, third-generation Egyptian grower and exporter since 1974. Premium fruit, from our farms straight to your home." />
+  <meta name="theme-color" content="#d60633" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="PICO Modern Agriculture" />
-  <meta property="og:description" content="Egyptian fruit, grown for the world. 7,000 acres, three generations." />
+  <meta property="og:description" content="As fresh as it gets. Family-grown Egyptian fruit since 1974." />
   <meta property="og:type" content="website" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
 
   <link rel="stylesheet" href="css/styles.css" />
@@ -32,20 +32,27 @@
   <header class="nav" id="nav">
     <div class="nav__inner">
       <a href="#top" class="brand" aria-label="PICO Modern Agriculture home">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-            <path d="M16 3C10 8 7 13 7 18a9 9 0 0 0 18 0c0-5-3-10-9-15Z" fill="currentColor"/>
-            <path d="M16 8c-3 3-5 6-5 9" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="brand__name">PICO<span class="brand__sub" data-i18n="brandSub">Modern Agriculture</span></span>
+        <svg class="pico-logo" viewBox="0 0 172 66" width="104" height="40" role="img" aria-label="PICO">
+          <defs>
+            <linearGradient id="picoRed" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#c4052e"/><stop offset="1" stop-color="#ea6288"/>
+            </linearGradient>
+            <linearGradient id="picoLeaf" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#5fa828"/><stop offset="1" stop-color="#9bd34a"/>
+            </linearGradient>
+          </defs>
+          <path d="M40 31 C42 15 55 4 66 2 C61 17 52 27 46 29 Z" fill="url(#picoLeaf)"/>
+          <path d="M62 6 C54 13 48 21 44 28" fill="none" stroke="#ffffff" stroke-opacity=".45" stroke-width="1.4" stroke-linecap="round"/>
+          <text x="0" y="55" font-family="Montserrat, sans-serif" font-weight="800" font-size="56" letter-spacing="-2" fill="url(#picoRed)">PICO</text>
+        </svg>
+        <span class="brand__sub" data-i18n="brandSub">Modern Agriculture</span>
       </a>
 
       <nav class="nav__links" aria-label="Primary">
         <a href="#grow" data-i18n="navGrow">What we grow</a>
+        <a href="#range" data-i18n="navRange">Products</a>
         <a href="#heritage" data-i18n="navHeritage">Heritage</a>
         <a href="#standards" data-i18n="navStandards">Standards</a>
-        <a href="#reach" data-i18n="navReach">Global reach</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
 
@@ -80,25 +87,62 @@
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="hero__grid">
         <div class="hero__copy">
-          <span class="eyebrow" data-i18n="heroEyebrow">Third-generation Egyptian growers</span>
+          <span class="eyebrow" data-i18n="heroEyebrow">As fresh as it gets</span>
           <h1 class="hero__title">
-            <span data-i18n="heroTitle1">Fruit grown with</span>
-            <span class="hero__accent" data-i18n="heroTitle2">three generations</span>
-            <span data-i18n="heroTitle3">of know-how.</span>
+            <span data-i18n="heroTitle1">From our farms</span>
+            <span class="hero__accent" data-i18n="heroTitle2">straight to your home.</span>
           </h1>
           <p class="hero__lede" data-i18n="heroLede">
-            PICO farms 7,000 acres across Egypt, growing premium fruit for supermarkets in the UK, Europe and the Gulf.
+            A family-grown Egyptian harvest since 1974. Premium fruit, picked on order and delivered at its peak.
           </p>
           <div class="hero__cta">
-            <a href="#grow" class="btn" data-i18n="heroCtaPrimary">See what we grow</a>
-            <a href="#heritage" class="btn btn--ghost" data-i18n="heroCtaSecondary">Our story</a>
+            <a href="#grow" class="btn" data-i18n="heroCtaPrimary">Explore the harvest</a>
+            <a href="#contact" class="btn btn--ghost" data-i18n="heroCtaSecondary">Talk to sales</a>
           </div>
-          <p class="hero__hint" data-i18n="heroHint">Drag the strawberry to spin it →</p>
+          <div class="hero__apps">
+            <span class="store-badge"><i class="ph ph-google-play-logo" aria-hidden="true"></i><span><small data-i18n="getItOn">Get it on</small>Google Play</span></span>
+            <span class="store-badge"><i class="ph ph-apple-logo" aria-hidden="true"></i><span><small data-i18n="downloadOn">Download on the</small>App Store</span></span>
+          </div>
         </div>
 
         <div class="hero__stage">
-          <div class="stage-ring" aria-hidden="true"></div>
-          <canvas id="heroCanvas" role="img" aria-label="Interactive 3D strawberry you can rotate"></canvas>
+          <div class="hero__blob" aria-hidden="true"></div>
+          <!-- auto-animating PICO app phone -->
+          <div class="phone" role="img" aria-label="The PICO app placing a fresh produce order">
+            <div class="phone__frame">
+              <div class="phone__notch"></div>
+              <div class="phone__screen">
+                <div class="app">
+                  <div class="app__bar">
+                    <span class="app__loc"><i class="ph ph-map-pin"></i> <b data-i18n="appDeliver">Cairo</b></span>
+                    <svg class="app__logo" viewBox="0 0 172 66" width="52" height="20" aria-hidden="true">
+                      <path d="M40 31 C42 15 55 4 66 2 C61 17 52 27 46 29 Z" fill="#7ac143"/>
+                      <text x="0" y="55" font-family="Montserrat, sans-serif" font-weight="800" font-size="56" letter-spacing="-2" fill="#d60633">PICO</text>
+                    </svg>
+                  </div>
+                  <div class="app__search"><i class="ph ph-magnifying-glass"></i> <span data-i18n="appSearch">Search fresh produce…</span></div>
+                  <div class="app__banner"><span data-i18n="appBanner">Harvest upon order</span></div>
+                  <div class="app__feedwrap">
+                    <div class="app__feed">
+                      <div class="prod"><span class="prod__img prod--straw"></span><div><b data-i18n="prodStraw">Frozen Strawberries</b><span class="prod__price">EGP 419</span></div><span class="prod__add">+</span></div>
+                      <div class="prod"><span class="prod__img prod--honey"></span><div><b data-i18n="prodHoney">Anise Honey 350g</b><span class="prod__price">EGP 96</span></div><span class="prod__add">+</span></div>
+                      <div class="prod"><span class="prod__img prod--corn"></span><div><b data-i18n="prodCorn">Super Sweet Corn</b><span class="prod__price">EGP 40</span></div><span class="prod__add">+</span></div>
+                      <div class="prod"><span class="prod__img prod--mango"></span><div><b data-i18n="prodMango">Frozen Mango</b><span class="prod__price">EGP 210</span></div><span class="prod__add">+</span></div>
+                      <div class="prod"><span class="prod__img prod--avo"></span><div><b data-i18n="prodAvo">PICO Avocado</b><span class="prod__price">EGP 85</span></div><span class="prod__add">+</span></div>
+                      <!-- duplicate for seamless loop -->
+                      <div class="prod"><span class="prod__img prod--straw"></span><div><b data-i18n="prodStraw">Frozen Strawberries</b><span class="prod__price">EGP 419</span></div><span class="prod__add">+</span></div>
+                      <div class="prod"><span class="prod__img prod--honey"></span><div><b data-i18n="prodHoney">Anise Honey 350g</b><span class="prod__price">EGP 96</span></div><span class="prod__add">+</span></div>
+                      <div class="prod"><span class="prod__img prod--corn"></span><div><b data-i18n="prodCorn">Super Sweet Corn</b><span class="prod__price">EGP 40</span></div><span class="prod__add">+</span></div>
+                    </div>
+                  </div>
+                  <div class="app__toast"><i class="ph ph-check-circle"></i> <span data-i18n="appToast">Order placed — harvesting now</span></div>
+                </div>
+              </div>
+            </div>
+            <span class="float-fruit float-fruit--1">🍓</span>
+            <span class="float-fruit float-fruit--2">🥭</span>
+            <span class="float-fruit float-fruit--3">🥑</span>
+          </div>
         </div>
       </div>
     </section>
@@ -108,7 +152,7 @@
       <div class="trust__inner">
         <span class="trust__label" data-i18n="trustLabel">Audited to the standards buyers require</span>
         <div class="trust__marks">
-          <span>BRC</span><span>GlobalG.A.P.</span><span>ETI</span><span>Field to Fork</span><span>Tesco Nurture</span>
+          <span>GlobalG.A.P.</span><span>BRC</span><span>ISO 9001</span><span>SEDEX · ETI</span><span>LEAF Marque</span><span>Select Farm</span>
         </div>
       </div>
     </section>
@@ -116,10 +160,10 @@
     <!-- ===== STATS ===== -->
     <section class="stats" aria-label="Company at a glance">
       <div class="stats__inner">
-        <div class="stat"><span class="stat__num" data-count="7000" data-suffix="">0</span><span class="stat__label" data-i18n="statAcres">Acres farmed</span></div>
-        <div class="stat"><span class="stat__num" data-count="3" data-suffix="">0</span><span class="stat__label" data-i18n="statGen">Generations of growers</span></div>
-        <div class="stat"><span class="stat__num" data-count="6" data-suffix="">0</span><span class="stat__label" data-i18n="statMarkets">Export regions</span></div>
-        <div class="stat"><span class="stat__num" data-count="5" data-suffix="">0</span><span class="stat__label" data-i18n="statCerts">Global certifications</span></div>
+        <div class="stat"><span class="stat__num" data-count="1974" data-plain="1">0</span><span class="stat__label" data-i18n="statSince">Growing since</span></div>
+        <div class="stat"><span class="stat__num" data-count="3" data-suffix="">0</span><span class="stat__label" data-i18n="statGen">Generations, one family</span></div>
+        <div class="stat"><span class="stat__num" data-count="75" data-suffix="%">0</span><span class="stat__label" data-i18n="statGrapes">of Egypt's grape exports</span></div>
+        <div class="stat"><span class="stat__num" data-count="4" data-prefix="#">0</span><span class="stat__label" data-i18n="statStraw">World strawberry producer</span></div>
       </div>
     </section>
 
@@ -178,15 +222,20 @@
       </div>
 
       <div class="grow__more">
-        <span data-i18n="growMoreLabel">Also in the basket</span>
+        <span data-i18n="growMoreLabel">The full crop calendar</span>
         <div class="pill-row">
-          <span class="pill" data-i18n="cropGrapes">Table grapes</span>
-          <span class="pill" data-i18n="cropStone">Peaches &amp; nectarines</span>
+          <span class="pill" data-i18n="cropGrapes">Seedless grapes</span>
           <span class="pill" data-i18n="cropAvocado">Avocado</span>
+          <span class="pill" data-i18n="cropMangoP">Mango</span>
+          <span class="pill" data-i18n="cropStone">Peaches &amp; nectarines</span>
+          <span class="pill" data-i18n="cropBlue">Blueberry</span>
+          <span class="pill" data-i18n="cropBlack">Blackberry</span>
+          <span class="pill" data-i18n="cropRasp">Raspberry</span>
           <span class="pill" data-i18n="cropBanana">Banana</span>
+          <span class="pill" data-i18n="cropDates">Barhi dates</span>
           <span class="pill" data-i18n="cropLoquat">Loquat</span>
-          <span class="pill" data-i18n="cropPeppers">Sweet peppers</span>
-          <span class="pill" data-i18n="cropSalad">Leafy salads</span>
+          <span class="pill" data-i18n="cropLychee">Lychee</span>
+          <span class="pill" data-i18n="cropCorn">Sweet corn</span>
         </div>
       </div>
     </section>
@@ -194,22 +243,78 @@
     <!-- ===== HERITAGE ===== -->
     <section class="heritage" id="heritage">
       <div class="heritage__media">
-        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1100&q=70"
-             alt="Rows of crops on a large farm at sunrise" loading="lazy"
-             onerror="this.closest('.heritage__media').classList.add('is-fallback')" />
+        <img src="assets/founder.jpg"
+             alt="Dr. Kamel Tawfik Diab, founder of PICO Modern Agriculture" loading="lazy"
+             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1100&q=70'" />
         <div class="heritage__badge">
-          <strong>1970s</strong>
-          <span data-i18n="heritageBadge">Farming since</span>
+          <strong>1974</strong>
+          <span data-i18n="heritageBadge">The seed of our foundation</span>
         </div>
       </div>
       <div class="heritage__copy">
-        <h2 data-i18n="heritageTitle">A family that reads the land</h2>
-        <p data-i18n="heritageBody1">PICO is a third-generation Egyptian grower and exporter. What started as family farmland has grown into one of the region's leading fresh-produce operations.</p>
-        <p data-i18n="heritageBody2">We are known for moving first: new farming techniques, new crops, new varieties and modern management systems that raise the bar for growers across Egypt.</p>
+        <span class="eyebrow" data-i18n="heritageEyebrow">Our heritage</span>
+        <h2 data-i18n="heritageTitle">Planted by a visionary in 1974</h2>
+        <p data-i18n="heritageBody1">PICO was founded by Dr. Kamel Tawfik Diab, a pioneer who cultivated arid desert land and grew varieties that were locally unheard of but prized in the world's most premium markets.</p>
+        <p data-i18n="heritageBody2">He built Egypt's first tissue-culture labs, connected the country to global breeders, and introduced the seedless grape that now makes up three quarters of Egypt's grape exports. Three generations on, the same family still runs the farms.</p>
         <div class="heritage__marks">
-          <div><strong>7,000</strong><span data-i18n="heritageMark1">acres owned &amp; farmed</span></div>
-          <div><strong data-i18n="heritageMark2Val">Field to Fork</strong><span data-i18n="heritageMark2">traceability</span></div>
+          <div><strong data-i18n="heritageMark1Val">1st</strong><span data-i18n="heritageMark1">tissue-culture labs in Egypt</span></div>
+          <div><strong data-i18n="heritageMark2Val">4th</strong><span data-i18n="heritageMark2">largest strawberry producer, worldwide</span></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== VALUE-ADD PRODUCTS ===== -->
+    <section class="range" id="range">
+      <div class="section-head section-head--center">
+        <h2 data-i18n="rangeTitle">Beyond the fresh harvest</h2>
+        <p data-i18n="rangeSub">The same fruit, carried further — frozen at its peak, jarred, and packed ready to eat.</p>
+      </div>
+      <div class="range__grid">
+        <article class="range-card range-card--honey">
+          <span class="range-card__img"><img src="assets/prod-honey.png" alt="" loading="lazy" onerror="this.style.display='none'"><i class="ph ph-drop"></i></span>
+          <h3 data-i18n="rangeHoney">Specialty honey</h3>
+          <p data-i18n="rangeHoneyB">Eight single-blossom honeys — from citrus and clover to Egyptian mountain and black seed.</p>
+        </article>
+        <article class="range-card range-card--frozen">
+          <span class="range-card__img"><img src="assets/prod-frozen.png" alt="" loading="lazy" onerror="this.style.display='none'"><i class="ph ph-snowflake"></i></span>
+          <h3 data-i18n="rangeFrozen">Frozen fruit</h3>
+          <p data-i18n="rangeFrozenB">Mango, strawberry, blueberry and blackberry, flash-frozen to lock in the harvest.</p>
+        </article>
+        <article class="range-card range-card--corn">
+          <span class="range-card__img"><img src="assets/prod-corn.png" alt="" loading="lazy" onerror="this.style.display='none'"><i class="ph ph-plant"></i></span>
+          <h3 data-i18n="rangeCorn">Super sweet corn</h3>
+          <p data-i18n="rangeCornB">On the cob or sliced, ready to eat — plus frozen corn and avocado purées.</p>
+        </article>
+        <article class="range-card range-card--jam">
+          <span class="range-card__img"><img src="assets/prod-jam.png" alt="" loading="lazy" onerror="this.style.display='none'"><i class="ph ph-cookie"></i></span>
+          <h3 data-i18n="rangeJam">Honey-based jams</h3>
+          <p data-i18n="rangeJamB">Blueberry, strawberry, blackberry and mixed berry, sweetened with our own honey.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== BRANDS ===== -->
+    <section class="brands" id="brands">
+      <div class="section-head section-head--center">
+        <h2 data-i18n="brandsTitle">One harvest, three labels</h2>
+        <p data-i18n="brandsSub">Whatever the market, there's a PICO line built to the same standard.</p>
+      </div>
+      <div class="brands__grid">
+        <article class="brand-card brand-card--signature">
+          <span class="brand-card__tag" data-i18n="brandSigTag">Handpicked Perfection</span>
+          <h3>Pico Signature</h3>
+          <p data-i18n="brandSigB">Our premium line — the best of each block, selected for the world's top shelves.</p>
+        </article>
+        <article class="brand-card brand-card--family">
+          <span class="brand-card__tag" data-i18n="brandFamTag">Guaranteed Goodness</span>
+          <h3>Pico Family</h3>
+          <p data-i18n="brandFamB">Everyday quality for every table, grown and packed to the same PICO promise.</p>
+        </article>
+        <article class="brand-card brand-card--elena">
+          <span class="brand-card__tag" data-i18n="brandElenaTag">International standard</span>
+          <h3>Elena</h3>
+          <p data-i18n="brandElenaB">An alternative line meeting the same quality and export certifications.</p>
+        </article>
       </div>
     </section>
 
@@ -220,11 +325,12 @@
         <p data-i18n="standardsSub">Our farms and packing houses are audited to the certifications top European and UK supermarkets require.</p>
       </div>
       <div class="cert-grid">
+        <div class="cert"><span class="cert__code">GlobalG.A.P.</span><span class="cert__desc" data-i18n="certGap">GRASP good practice</span></div>
         <div class="cert"><span class="cert__code">BRC</span><span class="cert__desc" data-i18n="certBrc">Global food safety</span></div>
-        <div class="cert"><span class="cert__code">GlobalG.A.P.</span><span class="cert__desc" data-i18n="certGap">Good agricultural practice</span></div>
-        <div class="cert"><span class="cert__code">ETI</span><span class="cert__desc" data-i18n="certEti">Ethical trade base code</span></div>
-        <div class="cert"><span class="cert__code">Field to Fork</span><span class="cert__desc" data-i18n="certF2f">Full traceability</span></div>
-        <div class="cert"><span class="cert__code">TNC</span><span class="cert__desc" data-i18n="certTnc">Tesco Nurture</span></div>
+        <div class="cert"><span class="cert__code">ISO 9001</span><span class="cert__desc" data-i18n="certIso">Quality management</span></div>
+        <div class="cert"><span class="cert__code">SEDEX · ETI</span><span class="cert__desc" data-i18n="certEti">Ethical trade</span></div>
+        <div class="cert"><span class="cert__code">LEAF Marque</span><span class="cert__desc" data-i18n="certLeaf">Sustainable farming</span></div>
+        <div class="cert"><span class="cert__code">Select Farm</span><span class="cert__desc" data-i18n="certSelect">Assured provenance</span></div>
       </div>
     </section>
 
@@ -270,7 +376,7 @@
           <svg viewBox="0 0 600 400" class="routes" role="presentation">
             <defs>
               <radialGradient id="hub" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="var(--lime)"/><stop offset="100%" stop-color="var(--green-600)"/>
+                <stop offset="0%" stop-color="var(--brand)"/><stop offset="100%" stop-color="var(--brand-600)"/>
               </radialGradient>
             </defs>
             <g class="routes__lines"></g>
@@ -295,8 +401,14 @@
           <h2 data-i18n="contactTitle">Let's talk supply</h2>
           <p data-i18n="contactSub">Buyers, importers and retail partners — tell us what you need and our commercial team will get back to you.</p>
           <div class="contact__meta">
-            <div><span data-i18n="contactLocLabel">Head office</span><strong data-i18n="contactLoc">Cairo, Egypt</strong></div>
-            <div><span data-i18n="contactWebLabel">Website</span><strong><a href="https://picoagriculture.com" target="_blank" rel="noopener">picoagriculture.com</a></strong></div>
+            <div><span data-i18n="contactPhoneLabel">Phone</span><strong><a href="tel:+20233377266">(+202) 3337-7266</a></strong></div>
+            <div><span data-i18n="contactEmailLabel">Email</span><strong><a href="mailto:info@pico-agriculture.com">info@pico-agriculture.com</a></strong></div>
+            <div class="contact__meta--wide"><span data-i18n="contactLocLabel">Head office</span><strong data-i18n="contactLoc">8 Geziret Al Arab St, Infinity Tower, Mohandessin, Giza, Egypt</strong></div>
+          </div>
+          <div class="contact__social">
+            <a href="https://facebook.com/PicoEg" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+            <a href="https://instagram.com/pico.eg" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+            <a href="https://www.linkedin.com/company/pico-modern-agriculture-company" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
           </div>
         </div>
         <form class="contact__form" id="contactForm" novalidate>
@@ -325,15 +437,28 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__brand">
-        <span class="brand__name">PICO<span class="brand__sub" data-i18n="brandSub">Modern Agriculture</span></span>
-        <p data-i18n="footerTag">Egyptian fruit, grown for the world.</p>
+        <svg class="pico-logo pico-logo--footer" viewBox="0 0 172 66" width="120" height="46" role="img" aria-label="PICO">
+          <defs>
+            <linearGradient id="picoRedF" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#c4052e"/><stop offset="1" stop-color="#ea6288"/>
+            </linearGradient>
+          </defs>
+          <path d="M40 31 C42 15 55 4 66 2 C61 17 52 27 46 29 Z" fill="#7ac143"/>
+          <text x="0" y="55" font-family="Montserrat, sans-serif" font-weight="800" font-size="56" letter-spacing="-2" fill="url(#picoRedF)">PICO</text>
+        </svg>
+        <p data-i18n="footerTag">As fresh as it gets. From our farms straight to your home.</p>
+        <div class="footer__social">
+          <a href="https://facebook.com/PicoEg" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+          <a href="https://instagram.com/pico.eg" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.linkedin.com/company/pico-modern-agriculture-company" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
       </div>
       <div class="footer__cols">
         <div>
-          <h4 data-i18n="footerColProduce">Produce</h4>
-          <a href="#grow" data-i18n="fruitStrawberry">Strawberry</a>
-          <a href="#grow" data-i18n="fruitMango">Mango</a>
-          <a href="#grow" data-i18n="cropGrapes">Table grapes</a>
+          <h4 data-i18n="footerColProduce">Harvest</h4>
+          <a href="#grow" data-i18n="navGrow">What we grow</a>
+          <a href="#range" data-i18n="navRange">Products</a>
+          <a href="#brands" data-i18n="footerBrands">Our brands</a>
         </div>
         <div>
           <h4 data-i18n="footerColCompany">Company</h4>
@@ -344,12 +469,13 @@
         <div>
           <h4 data-i18n="footerColConnect">Connect</h4>
           <a href="#contact" data-i18n="navContact">Contact</a>
-          <a href="https://picoagriculture.com" target="_blank" rel="noopener">picoagriculture.com</a>
+          <a href="mailto:info@pico-agriculture.com">info@pico-agriculture.com</a>
+          <a href="tel:+20233377266">(+202) 3337-7266</a>
         </div>
       </div>
     </div>
     <div class="footer__base">
-      <span data-i18n="footerRights">© <span id="year"></span> PICO Modern Agriculture. Independent fan concept.</span>
+      <span data-i18n="footerRights">© <span id="year"></span> PICO Modern Agriculture. Concept redesign.</span>
       <!-- Easter egg: the little tractor lives here -->
       <button class="tractor" id="tractor" aria-label="🚜" title="beep beep">🚜</button>
     </div>
