@@ -31,6 +31,8 @@ const I18N = {
     aboutPeopleB: "From the founder's first desert plots to a third generation of growers, PICO is still run by the family that built it — backed by agronomists and teams across Egypt.",
     cropFeatureT: "Grown, packed and shipped by PICO",
     cropFeatureB: "From avocado and mango to seedless grapes and berries, every crop is farmed on PICO land and handled through our own certified pack houses.",
+    calTitle: "Crop calendar", calCrop: "Crop",
+    calSub: "When each crop is in season and ready to ship from our Egyptian farms.",
 
     heroEyebrow: "As fresh as it gets",
     heroTitle1: "From our farms", heroTitle2: "straight to your home.",
@@ -149,6 +151,8 @@ const I18N = {
     aboutPeopleB: "من أوائل قطع المؤسّس الصحراوية إلى جيل ثالث من المزارعين، ما زالت پيكو تُدار على يد العائلة التي بنتها — يدعمها مهندسون زراعيون وفرق في مختلف أنحاء مصر.",
     cropFeatureT: "تُزرع وتُعبّأ وتُشحن بواسطة پيكو",
     cropFeatureB: "من الأفوكادو والمانجو إلى العنب اللابذري والتوت، كل محصول يُزرع في أرض پيكو ويُدار عبر محطات تعبئتنا المعتمدة.",
+    calTitle: "روزنامة المحاصيل", calCrop: "المحصول",
+    calSub: "متى يكون كل محصول في موسمه وجاهزًا للشحن من مزارعنا المصرية.",
 
     heroEyebrow: "طازجة كما ينبغي",
     heroTitle1: "من مزارعنا", heroTitle2: "مباشرة إلى بيتك.",

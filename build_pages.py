@@ -17,15 +17,7 @@ NAV_ITEMS = [
     ("contact","contact.html",       "navContact",  "Contact"),
 ]
 
-LOGO_SVG = ('<svg class="pico-logo" viewBox="0 0 172 66" width="104" height="40" role="img" aria-label="PICO">\n'
- '          <defs>\n'
- '            <linearGradient id="picoRed" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c4052e"/><stop offset="1" stop-color="#ea6288"/></linearGradient>\n'
- '            <linearGradient id="picoLeaf" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5fa828"/><stop offset="1" stop-color="#9bd34a"/></linearGradient>\n'
- '          </defs>\n'
- '          <path d="M40 31 C42 15 55 4 66 2 C61 17 52 27 46 29 Z" fill="url(#picoLeaf)"/>\n'
- '          <path d="M62 6 C54 13 48 21 44 28" fill="none" stroke="#ffffff" stroke-opacity=".45" stroke-width="1.4" stroke-linecap="round"/>\n'
- '          <text x="0" y="55" font-family="Montserrat, sans-serif" font-weight="800" font-size="56" letter-spacing="-2" fill="url(#picoRed)">PICO</text>\n'
- '        </svg>')
+LOGO_SVG = '<img class="pico-logo" src="assets/logo.png" alt="PICO" width="96" height="49" />'
 
 def head(title, desc):
     return f'''<!DOCTYPE html>
@@ -101,11 +93,7 @@ FOOTER = '''
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__brand">
-        <svg class="pico-logo pico-logo--footer" viewBox="0 0 172 66" width="120" height="46" role="img" aria-label="PICO">
-          <defs><linearGradient id="picoRedF" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c4052e"/><stop offset="1" stop-color="#ea6288"/></linearGradient></defs>
-          <path d="M40 31 C42 15 55 4 66 2 C61 17 52 27 46 29 Z" fill="#7ac143"/>
-          <text x="0" y="55" font-family="Montserrat, sans-serif" font-weight="800" font-size="56" letter-spacing="-2" fill="url(#picoRedF)">PICO</text>
-        </svg>
+        <img class="pico-logo pico-logo--footer" src="assets/logo.png" alt="PICO" width="120" height="61" />
         <p data-i18n="footerTag">As fresh as it gets. From our farms straight to your home.</p>
         <div class="footer__social">
           <a href="https://facebook.com/PicoEg" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
@@ -402,6 +390,45 @@ CONTACT = '''
       </div>
     </section>'''
 
+MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+CROPS = [
+    ("strawberryName", "Strawberries",        {11,12,1,2,3,4}),
+    ("cropGrapes",     "Seedless grapes",     {5,6,7,8}),
+    ("cropMangoP",     "Mango",               {7,8,9,10}),
+    ("cropAvocado",    "Avocado",             {10,11,12,1,2}),
+    ("cropStone",      "Peaches & nectarines",{5,6,7}),
+    ("cropBlue",       "Blueberry",           {3,4,5,6}),
+    ("cropBlack",      "Blackberry",          {5,6,7}),
+    ("cropRasp",       "Raspberry",           {5,6,7}),
+    ("cropLoquat",     "Loquat",              {3,4,5}),
+    ("cropLychee",     "Lychee",              {6,7}),
+    ("cropDates",      "Barhi dates",         {7,8,9}),
+    ("cropBanana",     "Banana",              {1,2,3,4,5,6,7,8,9,10,11,12}),
+    ("cropCorn",       "Sweet corn",          {4,5,6,7,8,9,10,11}),
+]
+
+def build_calendar():
+    head_cells = "".join(f'<th>{m}</th>' for m in MONTHS)
+    rows = ""
+    for key, label, months in CROPS:
+        cells = "".join(
+            f'<td class="{"on" if (i+1) in months else ""}"><span></span></td>'
+            for i in range(12))
+        rows += f'<tr><th scope="row" data-i18n="{key}">{label}</th>{cells}</tr>\n        '
+    return f'''
+    <section class="calendar" id="calendar">
+      <div class="section-head section-head--center"><h2 data-i18n="calTitle">Crop calendar</h2><p data-i18n="calSub">When each crop is in season and ready to ship from our Egyptian farms.</p></div>
+      <div class="calendar__scroll">
+        <table class="calendar__table">
+          <thead><tr><th class="calendar__corner" data-i18n="calCrop">Crop</th>{head_cells}</tr></thead>
+          <tbody>
+        {rows}</tbody>
+        </table>
+      </div>
+    </section>'''
+
+CALENDAR = build_calendar()
+
 def page(fname, active, title, desc, main, three=False):
     html = (head(title, desc) + nav(active) +
             '\n  <main id="main">\n    <span id="top"></span>\n' + main +
@@ -420,7 +447,7 @@ PAGES = [
      feature("workers.jpg","aboutPeopleT","aboutPeopleB", flip=True) + CTA_BAND, False),
     ("crop-calendar.html", "crop", "Crop Calendar — PICO Modern Agriculture",
      "PICO's year-round basket of premium fruit, viewable in interactive 3D.",
-     page_hero("phCropT","phCropS") + GROW +
+     page_hero("phCropT","phCropS") + GROW + CALENDAR +
      feature("avocado.jpg","cropFeatureT","cropFeatureB") + CTA_BAND, True),
     ("value-add.html", "value", "Value-Add Products — PICO Modern Agriculture",
      "PICO honey, frozen fruit, sweet corn, jams and the Signature, Family and Elena brands.",
