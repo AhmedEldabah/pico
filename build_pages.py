@@ -3,10 +3,8 @@
 Run:  python3 build_pages.py   (outputs index.html, about.html, etc.)
 Edit content here, not in the generated HTML."""
 
-FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com" />\n'
- '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n'
- '  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />\n'
- '  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />')
+FONTS = ('<link rel="stylesheet" href="assets/vendor/fonts/fonts.css" />\n'
+ '  <link rel="stylesheet" href="assets/vendor/phosphor/style.css" />')
 
 NAV_ITEMS = [
     ("home",   "index.html",         "navHome",     "Home"),
@@ -130,8 +128,8 @@ FOOTER = '''
   <div class="fruit-rain" id="fruitRain" aria-hidden="true"></div>'''
 
 def scripts(three=False):
-    libs = ('  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>\n'
-            '  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>\n'
+    libs = ('  <script src="assets/vendor/three.min.js"></script>\n'
+            '  <script src="assets/vendor/OrbitControls.js"></script>\n'
             '  <script src="js/fruits3d.js"></script>\n') if three else ''
     return f'''
 {libs}  <script src="js/i18n.js"></script>
