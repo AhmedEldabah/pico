@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Mont"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Mont"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Mont"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #fffdfc; font-family: "Mont", system-ui, sans-serif; }
+      .scene { position: absolute; inset: 0; opacity: 0; }
+      .center { display: flex; align-items: center; justify-content: center; flex-direction: column; }
+      .eyebrow { font-weight: 800; text-transform: uppercase; letter-spacing: .22em; color: #a3082c; }
+      img { display: block; }
+
+      /* S1 */
+      #s1 { background: #fffdfc; }
+      #s1 .logo { width: 520px; filter: drop-shadow(0 24px 50px rgba(122,5,34,.28)); }
+      #s1 .tag { margin-top: 40px; font-weight: 800; font-size: 64px; letter-spacing: -.02em; color: #16110f; }
+
+      /* S2 */
+      #s2 { background: radial-gradient(60% 70% at 50% 44%, #fddce1 0%, #fffdfc 72%); }
+      #s2 .lbl { position: absolute; top: 118px; width: 100%; text-align: center; font-size: 26px; }
+      #s2 .fruit { position: absolute; top: 50%; left: 50%; width: 620px; transform: translate(-50%,-50%); will-change: transform, opacity; }
+      #s2 .sub { position: absolute; bottom: 128px; width: 100%; text-align: center; font-weight: 600; font-size: 34px; color: #3f393d; }
+
+      /* S3 */
+      #s3 { background: linear-gradient(180deg,#fffdfc,#faf3f4); }
+      #s3 .phone { position: absolute; top: 50%; left: 640px; width: 430px; transform: translate(-50%,-50%); filter: drop-shadow(0 40px 70px rgba(122,5,34,.3)); }
+      #s3 .copy { position: absolute; top: 50%; left: 1020px; transform: translateY(-50%); width: 760px; }
+      #s3 .copy h2 { font-weight: 800; font-size: 96px; line-height: 1.0; letter-spacing: -.03em; color: #16110f; }
+      #s3 .chip { display: inline-flex; align-items: center; gap: 14px; margin-top: 36px; background: #14161a; color: #fff; font-weight: 700; font-size: 30px; padding: 18px 28px; border-radius: 999px; }
+      #s3 .chip b { color: #8ed14f; font-size: 34px; }
+
+      /* S4 */
+      #s4 { background: linear-gradient(135deg,#c4052e,#7a0522); color: #fff; }
+      #s4 .wrap { position: absolute; inset: 0; padding-left: 200px; display: flex; flex-direction: column; justify-content: center; }
+      #s4 .k { font-weight: 800; letter-spacing: -.03em; line-height: .96; }
+      #s4 .k1 { font-size: 150px; }
+      #s4 .k2 { font-size: 92px; margin-top: 18px; max-width: 1360px; }
+      #s4 .k3 { font-size: 40px; font-weight: 600; margin-top: 34px; color: #ffd6dd; }
+      #s4 .leaf { color: #b6e86a; }
+
+      /* S5 */
+      #s5 { background: #fffdfc; }
+      #s5 .cal { position: absolute; top: 50%; left: 50%; width: 1500px; transform: translate(-50%,-50%); border-radius: 20px; }
+      #s5 .lock { position: absolute; inset: 0; background: linear-gradient(135deg,#c4052e,#a3082c); opacity: 0; }
+      #s5 .lock .logo { width: 560px; filter: drop-shadow(0 20px 40px rgba(0,0,0,.25)); }
+      #s5 .lock .l1 { margin-top: 46px; font-weight: 800; font-size: 60px; color: #fff; letter-spacing: -.02em; }
+      #s5 .lock .l2 { margin-top: 16px; font-weight: 600; font-size: 36px; color: #ffdbe2; }
+      #s5 .lock .l3 { margin-top: 42px; font-weight: 700; font-size: 27px; letter-spacing: .1em; color: #fff; }
+      #s5 .lock .glow { position: absolute; inset: 0; background: radial-gradient(42% 42% at 50% 46%, rgba(255,255,255,.26), transparent 70%); opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20.6" data-width="1920" data-height="1080">
+
+      <!-- S1 — logo strike -->
+      <div id="s1" class="scene clip center" data-start="0" data-duration="3.7" data-track-index="1">
+        <img class="logo" src="assets/img/logo.png" alt="PICO" />
+        <div class="tag">As fresh as it gets.</div>
+      </div>
+
+      <!-- S2 — real 3D fruit -->
+      <div id="s2" class="scene clip" data-start="3.3" data-duration="5.1" data-track-index="2">
+        <div class="lbl"><span class="eyebrow">Real 3D fruit &middot; spin it</span></div>
+        <img class="fruit f-straw" src="assets/img/straw.png" alt="3D strawberry" />
+        <img class="fruit f-mango" src="assets/img/mango.png" alt="3D mango" style="opacity:0" />
+        <img class="fruit f-citrus" src="assets/img/citrus.png" alt="3D citrus" style="opacity:0" />
+        <div class="sub">Strawberry. Mango. Citrus.</div>
+      </div>
+
+      <!-- S3 — order app -->
+      <div id="s3" class="scene clip" data-start="8.0" data-duration="4.9" data-track-index="1">
+        <img class="phone" src="assets/img/phone.png" alt="PICO app" />
+        <div class="copy">
+          <h2>Order it<br/>in a tap.</h2>
+          <div class="chip"><b>&#10003;</b> Order placed &mdash; harvesting now</div>
+        </div>
+      </div>
+
+      <!-- S4 — heritage stats -->
+      <div id="s4" class="scene clip" data-start="12.5" data-duration="3.6" data-track-index="2">
+        <div class="wrap">
+          <div class="k k1">Since 1974.</div>
+          <div class="k k2">Egypt&rsquo;s <span class="leaf">#4</span> strawberry producer, worldwide.</div>
+          <div class="k3">75% of Egypt&rsquo;s grape exports grow on PICO vines.</div>
+        </div>
+      </div>
+
+      <!-- S5 — calendar sweep + lockup -->
+      <div id="s5" class="scene clip" data-start="15.7" data-duration="4.9" data-track-index="1">
+        <img class="cal" src="assets/img/calendar.png" alt="PICO crop calendar" />
+        <div class="lock center">
+          <div class="glow"></div>
+          <img class="logo" src="assets/img/logo2.png" alt="PICO" />
+          <div class="l1">As fresh as it gets.</div>
+          <div class="l2">From our farms straight to your home.</div>
+          <div class="l3">PICOAGRICULTURE.COM</div>
+        </div>
+      </div>
+
+      <!-- music bed -->
+      <audio id="bgm" data-start="0" data-duration="20.6" data-track-index="9" data-volume="0.85"
+             data-fade-in="0.4" data-fade-out="1.8" src="assets/music/track.m4a"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      /* S1 (0–3.7): logo strike */
+      tl.fromTo("#s1", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+      tl.fromTo("#s1 .logo", { scale: 0.82, y: 10 }, { scale: 1, y: 0, duration: 0.7, ease: "back.out(1.7)" }, 0.1);
+      tl.fromTo("#s1 .tag", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6 }, 0.55);
+      tl.to("#s1", { opacity: 0, duration: 0.5 }, 3.2);
+
+      /* S2 (3.3–8.4): 3D fruit swaps */
+      tl.fromTo("#s2", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 3.3);
+      tl.fromTo("#s2 .lbl", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.5 }, 3.5);
+      tl.fromTo("#s2 .f-straw", { scale: 0.7, rotation: -12, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.8, ease: "back.out(1.5)" }, 3.5);
+      tl.to("#s2 .f-straw", { rotation: 8, duration: 1.2, ease: "sine.inOut", overwrite: "auto" }, 4.35);
+      tl.fromTo("#s2 .sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 3.9);
+      tl.to("#s2 .f-straw", { opacity: 0, scale: 0.9, duration: 0.4 }, 5.0);            /* beat-grid: 5.03s */
+      tl.fromTo("#s2 .f-mango", { opacity: 0, scale: 0.8, rotation: -8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, 5.05);
+      tl.to("#s2 .f-mango", { rotation: 8, duration: 0.7, ease: "sine.inOut", overwrite: "auto" }, 5.7);
+      tl.to("#s2 .f-mango", { opacity: 0, scale: 0.9, duration: 0.4 }, 6.5);            /* beat-grid: 6.53s */
+      tl.fromTo("#s2 .f-citrus", { opacity: 0, scale: 0.8, rotation: -8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, 6.55);
+      tl.to("#s2 .f-citrus", { rotation: 8, duration: 0.6, ease: "sine.inOut", overwrite: "auto" }, 7.2);
+      tl.to("#s2", { opacity: 0, duration: 0.5 }, 7.9);
+
+      /* S3 (8.0–12.9): order app */
+      tl.fromTo("#s3", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 8.0);
+      tl.fromTo("#s3 .phone", { opacity: 0, y: 90 }, { opacity: 1, y: 0, duration: 0.8, ease: "power4.out" }, 8.15);
+      tl.fromTo("#s3 .copy h2", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.6 }, 8.5);
+      tl.fromTo("#s3 .chip", { opacity: 0, scale: 0.7, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(2)" }, 9.9);
+      tl.to("#s3", { opacity: 0, duration: 0.5 }, 12.4);
+
+      /* S4 (12.5–16.1): stats */
+      tl.fromTo("#s4", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 12.5);
+      tl.fromTo("#s4 .k1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55 }, 12.7);
+      tl.fromTo("#s4 .k2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6 }, 13.5);
+      tl.fromTo("#s4 .k3", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55 }, 14.5);
+      tl.to("#s4", { opacity: 0, duration: 0.5 }, 15.6);
+
+      /* S5 (15.7–20.6): calendar + lockup */
+      tl.fromTo("#s5", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 15.7);
+      tl.fromTo("#s5 .cal", { opacity: 0, x: -70, scale: 0.98 }, { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: "power3.out" }, 15.8);
+      tl.to("#s5 .cal", { opacity: 0, scale: 0.92, duration: 0.6 }, 16.8);              /* beat-locked: 17.02s */
+      tl.fromTo("#s5 .lock", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 16.9);
+      tl.fromTo("#s5 .lock .logo", { opacity: 0, scale: 0.86, y: 14 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" }, 17.0);
+      tl.fromTo("#s5 .lock .l1", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.55 }, 17.35);
+      tl.fromTo("#s5 .lock .l2", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5 }, 17.6);
+      tl.fromTo("#s5 .lock .l3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5 }, 17.95);
+      tl.fromTo("#s5 .lock .glow", { opacity: 0 }, { opacity: 0.9, duration: 0.5, yoyo: true, repeat: 1 }, 17.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
