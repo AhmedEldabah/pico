@@ -603,13 +603,11 @@ html[dir="rtl"] .eyebrow { letter-spacing: 0; }
   .phone { width: min(240px, 62vw); }
   .float-fruit--3 { display: none; }
 }
-/* performance: freeze the phone's continuous animations on phones */
-@media (max-width: 760px) {
-  .app__feed { animation: none; }
-  .app__toast { animation: none; transform: translateY(0); opacity: 1; }
-  .app__feed .prod:nth-child(3) .prod__add { animation: none; }
-  .float-fruit { animation: none; }
-  .stage-ring { animation: none; }
+/* keep the phone's "placing an order" animation running on mobile too;
+   transform/opacity only, so it stays smooth. Honour reduced-motion below. */
+@media (prefers-reduced-motion: reduce) {
+  .app__feed, .app__toast, .app__feed .prod:nth-child(3) .prod__add, .float-fruit, .stage-ring { animation: none; }
+  .app__toast { transform: translateY(0); opacity: 1; }
 }
 @media (max-width: 620px) {
   .range__grid { grid-template-columns: 1fr; max-width: 340px; }
@@ -692,18 +690,33 @@ html[dir="rtl"] .teaser-card__link::after { content: " ←"; }
   .values__grid { grid-template-columns: 1fr; max-width: 300px; }
 }
 
-/* ---- crop calendar ---- */
+/* ---- crop calendar (editorial) ---- */
 .calendar { padding: clamp(40px,6vw,80px) 0; }
-.calendar__scroll { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.calendar__table { width: 100%; min-width: 680px; border-collapse: separate; border-spacing: 0; }
-.calendar__table th, .calendar__table td { padding: 10px 6px; text-align: center; font-size: .82rem; }
-.calendar__table thead th { color: var(--muted); font-weight: 700; font-size: .74rem; text-transform: uppercase; letter-spacing: .04em; }
-.calendar__table th[scope="row"] { text-align: start; font-weight: 600; font-size: .9rem; white-space: nowrap;
-  position: sticky; inset-inline-start: 0; background: var(--bg); padding-inline-end: 16px; }
-.calendar__corner { position: sticky; inset-inline-start: 0; background: var(--bg); z-index: 1; text-align: start !important; }
-.calendar__table tbody tr { border-radius: 10px; }
-.calendar__table tbody tr:nth-child(odd) th[scope="row"],
-.calendar__table tbody tr:nth-child(odd) td { background: color-mix(in srgb, var(--bg-2) 60%, transparent); }
-.calendar__table td span { display: block; height: 14px; border-radius: 7px; background: transparent; }
-.calendar__table td.on span { background: var(--brand-grad); box-shadow: var(--shadow-sm); }
-.calendar__table td.on { position: relative; }
+.calendar__panel { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.calendar__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch;
+  background: radial-gradient(120% 100% at 0 0, var(--pink) 0%, transparent 42%), var(--surface);
+  border: 1px solid var(--line); border-radius: 22px; padding: 22px clamp(14px,2vw,26px) 12px; box-shadow: var(--shadow); }
+[data-theme="dark"] .calendar__scroll { background: radial-gradient(120% 100% at 0 0, color-mix(in srgb,var(--brand) 18%, transparent) 0%, transparent 42%), var(--surface); }
+.calendar__inner { min-width: 720px; }
+.cal-head, .cal-row { display: grid; grid-template-columns: 176px 1fr; align-items: center; }
+.cal-head__label { font-size: .7rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.cal-track { position: relative; display: grid; grid-template-columns: repeat(12,1fr); grid-auto-rows: 34px; }
+.cal-row .cal-track { background-image: repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px calc(100%/12)); }
+.cal-track--head { grid-auto-rows: auto; }
+.cal-m { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); text-align: center; padding-bottom: 8px; }
+.cal-row { border-top: 1px solid var(--line); }
+.cal-row:last-child { border-bottom: 1px solid var(--line); }
+.cal-row__label { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .92rem; padding-inline-end: 14px; }
+.cal-row__e { font-size: 1.3rem; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
+.cal-bar { grid-row: 1; align-self: center; height: 22px; margin: 0 3px; border-radius: 999px;
+  box-shadow: 0 6px 16px -9px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.4); transition: transform .18s; }
+.cal-bar:hover { transform: translateY(-2px); }
+
+/* ---- 3D model loader spinner ---- */
+.model-loader { position: absolute; inset: 0; display: none; place-items: center; pointer-events: none; z-index: 2; }
+.model-loader.is-on { display: grid; }
+.model-loader__ring { width: 42px; height: 42px; border-radius: 50%;
+  border: 3px solid color-mix(in srgb, var(--brand) 25%, transparent); border-top-color: var(--brand);
+  animation: spin360 .9s linear infinite; }
+@keyframes spin360 { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .model-loader__ring { animation: none; } }

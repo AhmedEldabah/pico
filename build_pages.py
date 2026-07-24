@@ -130,6 +130,7 @@ FOOTER = '''
 def scripts(three=False):
     libs = ('  <script src="assets/vendor/three.min.js"></script>\n'
             '  <script src="assets/vendor/OrbitControls.js"></script>\n'
+            '  <script src="assets/vendor/GLTFLoader.js"></script>\n'
             '  <script src="js/fruits3d.js"></script>\n') if three else ''
     return f'''
 {libs}  <script src="js/i18n.js"></script>
@@ -389,39 +390,53 @@ CONTACT = '''
     </section>'''
 
 MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+# key, label, months in-season, emoji, gradient
 CROPS = [
-    ("strawberryName", "Strawberries",        {11,12,1,2,3,4}),
-    ("cropGrapes",     "Seedless grapes",     {5,6,7,8}),
-    ("cropMangoP",     "Mango",               {7,8,9,10}),
-    ("cropAvocado",    "Avocado",             {10,11,12,1,2}),
-    ("cropStone",      "Peaches & nectarines",{5,6,7}),
-    ("cropBlue",       "Blueberry",           {3,4,5,6}),
-    ("cropBlack",      "Blackberry",          {5,6,7}),
-    ("cropRasp",       "Raspberry",           {5,6,7}),
-    ("cropLoquat",     "Loquat",              {3,4,5}),
-    ("cropLychee",     "Lychee",              {6,7}),
-    ("cropDates",      "Barhi dates",         {7,8,9}),
-    ("cropBanana",     "Banana",              {1,2,3,4,5,6,7,8,9,10,11,12}),
-    ("cropCorn",       "Sweet corn",          {4,5,6,7,8,9,10,11}),
+    ("strawberryName","Strawberries",        {11,12,1,2,3,4}, "🍓","linear-gradient(90deg,#e8556e,#c00b2e)"),
+    ("cropGrapes",    "Seedless grapes",     {5,6,7,8},       "🍇","linear-gradient(90deg,#9160a6,#4c2a66)"),
+    ("cropMangoP",    "Mango",               {7,8,9,10},      "🥭","linear-gradient(90deg,#f4b23c,#e07b1f)"),
+    ("cropAvocado",   "Avocado",             {10,11,12,1,2},  "🥑","linear-gradient(90deg,#8fc03f,#4f7d2e)"),
+    ("cropStone",     "Peaches & nectarines",{5,6,7},         "🍑","linear-gradient(90deg,#f6a86a,#e86f4a)"),
+    ("cropBlue",      "Blueberry",           {3,4,5,6},       "🫐","linear-gradient(90deg,#6f83c4,#39498a)"),
+    ("cropBlack",     "Blackberry",          {5,6,7},         "🫐","linear-gradient(90deg,#5a4a7a,#241a3a)"),
+    ("cropRasp",      "Raspberry",           {5,6,7},         "🍓","linear-gradient(90deg,#e05a78,#a01f3e)"),
+    ("cropLoquat",    "Loquat",              {3,4,5},         "🟠","linear-gradient(90deg,#f4c74e,#d99a2b)"),
+    ("cropLychee",    "Lychee",              {6,7},           "🔴","linear-gradient(90deg,#e0564f,#b8322e)"),
+    ("cropDates",     "Barhi dates",         {7,8,9},         "🟤","linear-gradient(90deg,#d9a24a,#a9741f)"),
+    ("cropBanana",    "Banana",              {1,2,3,4,5,6,7,8,9,10,11,12}, "🍌","linear-gradient(90deg,#f2d84a,#e0b52e)"),
+    ("cropCorn",      "Sweet corn",          {4,5,6,7,8,9,10,11}, "🌽","linear-gradient(90deg,#b6cc4a,#7aa52e)"),
 ]
 
+def runs(months):
+    ms = sorted(months); out = []; start = prev = None
+    for m in ms:
+        if start is None: start = prev = m
+        elif m == prev + 1: prev = m
+        else: out.append((start, prev)); start = prev = m
+    if start is not None: out.append((start, prev))
+    return out
+
 def build_calendar():
-    head_cells = "".join(f'<th>{m}</th>' for m in MONTHS)
+    head = "".join(f'<span class="cal-m">{m}</span>' for m in MONTHS)
     rows = ""
-    for key, label, months in CROPS:
-        cells = "".join(
-            f'<td class="{"on" if (i+1) in months else ""}"><span></span></td>'
-            for i in range(12))
-        rows += f'<tr><th scope="row" data-i18n="{key}">{label}</th>{cells}</tr>\n        '
+    for key, label, months, emoji, grad in CROPS:
+        bars = ""
+        for (a, b) in runs(months):
+            bars += f'<span class="cal-bar" style="grid-column:{a+1}/{b+2};background:{grad}"></span>'
+        rows += (f'<div class="cal-row">'
+                 f'<span class="cal-row__label"><span class="cal-row__e">{emoji}</span>'
+                 f'<span data-i18n="{key}">{label}</span></span>'
+                 f'<span class="cal-track">{bars}</span></div>\n        ')
     return f'''
     <section class="calendar" id="calendar">
       <div class="section-head section-head--center"><h2 data-i18n="calTitle">Crop calendar</h2><p data-i18n="calSub">When each crop is in season and ready to ship from our Egyptian farms.</p></div>
-      <div class="calendar__scroll">
-        <table class="calendar__table">
-          <thead><tr><th class="calendar__corner" data-i18n="calCrop">Crop</th>{head_cells}</tr></thead>
-          <tbody>
-        {rows}</tbody>
-        </table>
+      <div class="calendar__panel">
+        <div class="calendar__scroll">
+          <div class="calendar__inner">
+            <div class="cal-head"><span class="cal-head__label" data-i18n="calCrop">Crop</span><span class="cal-track cal-track--head">{head}</span></div>
+            {rows}
+          </div>
+        </div>
       </div>
     </section>'''
 
